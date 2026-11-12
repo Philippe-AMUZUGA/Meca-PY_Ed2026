@@ -1,0 +1,1237 @@
+{
+  "depot": "Meca-PY_Ed2026",
+  "titre_affiche": "Méca-Py",
+  "edition": "2026",
+  "version": "0.1.0",
+  "reference_git": "main",
+  "url_depot": "https://github.com/philippe-amuzuga/Meca-PY_Ed2026",
+  "ouvrages": [
+    {
+      "id": "python",
+      "titre": "Méca-Py",
+      "isbn": null
+    }
+  ],
+  "jeux": [
+    {
+      "id": "Traitement_Acier",
+      "fichier": "donnees/MecaIA-Traitement_Acier.xlsx",
+      "sha256": "4d38f19eda82408f1d9d8b540e02d7d4d8ed77c9dfd00b77282633064c1f13e7",
+      "octets": 9451,
+      "lignes": 150,
+      "colonnes": 6,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "resistance_traction_MPa (MPa)",
+      "type_probleme": "régression",
+      "unites": "température en °C, temps en min, teneurs en %, résistance en MPa",
+      "origine_publique": "Iris (Fisher, 1936), UCI Machine Learning Repository, doi:10.24432/C56C76",
+      "licence_origine": "CC BY 4.0",
+      "transformation": "Les quatre mesures des fleurs deviennent par transformation affine des paramètres de traitement thermique, les trois espèces trois nuances d'acier, et la résistance à la traction est une colonne construite."
+    },
+    {
+      "id": "Plaque_Trouee_FEA",
+      "fichier": "donnees/MecaIA-Plaque_Trouee_FEA.xlsx",
+      "sha256": "5979320ce2d3a5af44b97a550515f6239fec3ef936c5a178ec9203d59d5ad6b5",
+      "octets": 11942,
+      "lignes": 100,
+      "colonnes": 12,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "Disp/mm (déplacement maximal, mm)",
+      "type_probleme": "régression, substitut de calcul par éléments finis",
+      "unites": "dimensions en mm, contrainte en MPa, déplacement en mm, durée de calcul en s",
+      "origine_publique": "jeu construit, cent calculs par éléments finis d'une plaque de 400 × 200 × 20 mm à trou centré, diamètre de 10 à 110 mm, traction de 1 000 N",
+      "licence_origine": "sans objet, jeu construit",
+      "transformation": "Aucune, sorties du solveur conservées telles quelles (dont une colonne de messages vide et six colonnes constantes)."
+    },
+    {
+      "id": "Qualite_soudure",
+      "fichier": "donnees/MecaIA-Qualite_soudure.xlsx",
+      "sha256": "b569cb56041f3c9f7d965b74f58e272fa0e3cb8f8b6ab3b448c6df07d0ddb2ed",
+      "octets": 64786,
+      "lignes": 900,
+      "colonnes": 19,
+      "feuilles": [
+        "soudage"
+      ],
+      "cible": "qualite_soudure (conforme, non-conforme)",
+      "type_probleme": "classification binaire",
+      "unites": "expérience en années, température en °C, intensité en A, épaisseur en mm, vitesse en mm/min",
+      "origine_publique": "jeu construit, simulation de 900 soudures d'une campagne d'essais par le script generateurs/generer_qualite_soudure.py (graine 42), sans jeu public d'origine",
+      "licence_origine": "sans objet, jeu construit",
+      "transformation": "Aucune, simulation produite par le script du dépôt : la commande `python generateurs/generer_qualite_soudure.py verifier donnees` régénère le jeu, le compare au classeur et contrôle ses propriétés."
+    },
+    {
+      "id": "Suivi_Production_Machines",
+      "fichier": "donnees/MecaIA-Suivi_Production_Machines.xlsx",
+      "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6",
+      "octets": 1191262,
+      "lignes": 20000,
+      "colonnes": 14,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "etat_sante_machine (RAS, Degradation_legere, Degradation_severe, Panne_imminente)",
+      "type_probleme": "classification multiclasse, préparation des données (valeurs manquantes), régression de l’indice de santé",
+      "unites": "ancienneté en années, complexité et efficacité sans dimension, nombre de capteurs entier, utilisation en proportion, température en °C, vibrations en mm/s, consommation en kWh/h, productivité en pièces/h, indice de santé de 0 à 100",
+      "origine_publique": "jeu construit, simulation de 20 000 machines de production par le script generateurs/generer_suivi_production_machines.py (graine 42), sans jeu public d’origine",
+      "licence_origine": "sans objet, jeu construit",
+      "transformation": "Aucune, simulation produite par le script du dépôt : uniformes PCG64 de graine 42, quantiles SciPy, relations explicites d’usure, de rendement et de complexité, trois capteurs avec vides indépendants de probabilité 0,10. L’état recode l’indice de santé aux seuils 32, 42 et 64 (indice à exclure pour la classification), la classe de productivité recode la productivité aux seuils 70 et 100. La commande `python -X utf8 generateurs/generer_suivi_production_machines.py verifier donnees` régénère le jeu, le compare au classeur cellule par cellule et contrôle ses propriétés."
+    },
+    {
+      "id": "Surveillance_Vibratoire",
+      "fichier": "donnees/MecaIA-Surveillance_Vibratoire.xlsx",
+      "sha256": "d75877b8b2d5ba784846bbfd14c304286e4156e2eb49c7a12fb9f8799ccd9141",
+      "octets": 22634,
+      "lignes": 150,
+      "colonnes": 25,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "duree_vie_restante_RUL_h (h) en régression, alarme_criticite (0 ou 1) en classification",
+      "type_probleme": "régression et classification, sélection de variables",
+      "unites": "vitesse en tr/min, charge en kN, pression en bar, débit en L/min, vibrations en mm/s, température en °C, émission acoustique en dB, courant en A, puissance en kW, durée de vie en h",
+      "origine_publique": "jeu construit, relevés simulés d'un parc de 150 machines tournantes",
+      "licence_origine": "sans objet, jeu construit",
+      "transformation": "Aucune, simulation produite directement dans ce contexte."
+    },
+    {
+      "id": "RUL",
+      "fichier": "donnees/MecaIA-RUL.xlsx",
+      "sha256": "6925d3c613ec0f021457c65cf5e339f6eb43b46d2064d51312871ca1d88cccd2",
+      "octets": 14033,
+      "lignes": 240,
+      "colonnes": 6,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "RUL_jours (jours)",
+      "type_probleme": "régression",
+      "unites": "couple en N·m, puissance en kW, masse en kg, temps de réponse en ms, durée de vie résiduelle en jours",
+      "origine_publique": "Auto MPG (Quinlan, 1993), UCI Machine Learning Repository, doi:10.24432/C5859H",
+      "licence_origine": "CC BY 4.0",
+      "transformation": "240 des 398 voitures du fichier d'origine, dans son ordre (cylindres, cylindrée, puissance, masse, accélération), renommées en grandeurs d'organes de transmission et mises à l'échelle (masse en kg, puissance en kW, couple ramené à environ 100 à 500 N·m, temps de réponse en ms) avec un bruit de 1 % de graine fixée, nombre de cylindres regroupé en régime thermique à trois niveaux (trois lignes sans régime renseigné), durée de vie restante construite par simulation à graine fixée."
+    },
+    {
+      "id": "TimeSeries_RUL",
+      "fichier": "donnees/MecaIA-TimeSeries_RUL.xlsx",
+      "sha256": "e48b0ff85d225ba79c2be2627e2be55c70a96b70bb27da203e0712011ad24ebe",
+      "octets": 2015521,
+      "lignes": 18855,
+      "colonnes": 10,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "Duree_Vie_Restante_Cycles (cycles)",
+      "type_probleme": "séries temporelles, régression par machine (100 unités)",
+      "unites": "cycles en heures, charge en %, vitesse en tr/min, température en K, pression en bar, vibration en mm/s, courant en A, contamination en ppm",
+      "origine_publique": "jeu construit, simulation de 100 machines suivies cycle par cycle jusqu'à la défaillance",
+      "licence_origine": "sans objet, jeu construit",
+      "transformation": "Aucune, simulation produite directement dans ce contexte."
+    },
+    {
+      "id": "AI4I_maintenance",
+      "fichier": "donnees/MecaIA-AI4I_maintenance.xlsx",
+      "sha256": "ee47f4d2337b31c92c53226a5cae5d6db446eef6d2404c31abe401353623f1d6",
+      "octets": 638832,
+      "lignes": 10000,
+      "colonnes": 9,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "Panne (0 ou 1, 339 sur 10 000)",
+      "type_probleme": "classification binaire déséquilibrée sur série temporelle",
+      "unites": "temps en jours, températures en °C, vitesse en tr/min, couple en N·m, usure en h, puissance en W, vibration en mm/s",
+      "origine_publique": "AI4I 2020 Predictive Maintenance Dataset (Matzka, 2020), UCI Machine Learning Repository, doi:10.24432/C5HS5C",
+      "licence_origine": "CC BY 4.0",
+      "transformation": "Températures converties en degrés Celsius (celle du procédé recalée en température de palier), usure de l'outil convertie en heures, horodatage au pas de 4 heures, puissance et vibration ajoutées, valeurs ajustées et non utilisables comme lois physiques."
+    },
+    {
+      "id": "AI4I_maintenance_TypePanne",
+      "fichier": "donnees/MecaIA-AI4I_maintenance_TypePanne.xlsx",
+      "sha256": "534487bdf0b7b46d4239c0a71e9dc1cb80962ca2a2ebc0fc6c4732e88c0cce9b",
+      "octets": 284116,
+      "lignes": 10000,
+      "colonnes": 7,
+      "feuilles": [
+        "Sheet1"
+      ],
+      "cible": "Panne et cinq modes de défaillance (outil, hydraulique, puissance, surcharge, alimentation), 0 ou 1",
+      "type_probleme": "classification multi-étiquette, fusion temporelle avec AI4I_maintenance",
+      "unites": "temps en jours, indicateurs 0 ou 1",
+      "origine_publique": "AI4I 2020 Predictive Maintenance Dataset (Matzka, 2020), UCI Machine Learning Repository, doi:10.24432/C5HS5C",
+      "licence_origine": "CC BY 4.0",
+      "transformation": "Les cinq modes de défaillance d'origine (TWF, HDF, PWF, OSF, RNF) sont renommés et indexés sur le même horodatage que AI4I_maintenance."
+    }
+  ],
+  "elements": [],
+  "notebooks_livre": [
+    {
+      "id": "P01-1",
+      "ouvrage": "python",
+      "chapitre": 1,
+      "partie": 1,
+      "titre_partie": "Prendre en main et calculer",
+      "section": 1,
+      "titre_section": "Les bases de Python",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P01/P01-1_Premiers_Pas.ipynb",
+      "corrige": "python/P01/P01-1_Premiers_Pas_CORRIGE.ipynb",
+      "controles": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7"
+      ],
+      "resultats": {
+        "cellules": 9,
+        "lignes": 19,
+        "sha256": "7b9820c49d81e408e9818d79d7f866ab2ddf68006c6527a166198662139a2ed8"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "python": "3.12.0"
+      },
+      "sha256": "c4485c2df5146b681ce332c322ce1e38a5f84dee0eb5d348f78eef3fba58bc50",
+      "duree_s": 0.1,
+      "statut": "admis"
+    },
+    {
+      "id": "P02-1",
+      "ouvrage": "python",
+      "chapitre": 2,
+      "partie": 1,
+      "titre_partie": "Prendre en main et calculer",
+      "section": 1,
+      "titre_section": "Calculs, listes et boucles",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P02/P02-1_Calculer_Parcourir.ipynb",
+      "corrige": "python/P02/P02-1_Calculer_Parcourir_CORRIGE.ipynb",
+      "controles": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6"
+      ],
+      "resultats": {
+        "cellules": 8,
+        "lignes": 37,
+        "sha256": "0f595da4f706f3f26eff0a714d835023f689cf44f611f7242c237a52e231aae2"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "python": "3.12.0"
+      },
+      "sha256": "8510a49e92c71ca173ff97d4da1e5b7a7fd1f4e647b0a1f6551bb0157aede7d0",
+      "duree_s": 0.2,
+      "statut": "admis"
+    },
+    {
+      "id": "P03-1",
+      "ouvrage": "python",
+      "chapitre": 3,
+      "partie": 1,
+      "titre_partie": "Prendre en main et calculer",
+      "section": 1,
+      "titre_section": "Fonctions de calcul",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P03/P03-1_Fonctions.ipynb",
+      "corrige": "python/P03/P03-1_Fonctions_CORRIGE.ipynb",
+      "controles": [
+        "3.1",
+        "3.2",
+        "3.3"
+      ],
+      "resultats": {
+        "cellules": 9,
+        "lignes": 31,
+        "sha256": "a1490329ba44245f8afe8be1140a46d4f109d41b7d57d07578bb9dadd63737d1"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "python": "3.12.0"
+      },
+      "sha256": "d623f8a07277ce80929830cd2469095ba9178537edf13992a5cb144b5aeb6560",
+      "duree_s": 0.2,
+      "statut": "admis"
+    },
+    {
+      "id": "P03-2",
+      "ouvrage": "python",
+      "chapitre": 3,
+      "partie": 1,
+      "titre_partie": "Prendre en main et calculer",
+      "section": 2,
+      "titre_section": "Étude I : bielle en traction",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P03/P03-2_Etude_Bielle.ipynb",
+      "corrige": "python/P03/P03-2_Etude_Bielle_CORRIGE.ipynb",
+      "controles": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "resultats": {
+        "cellules": 5,
+        "lignes": 13,
+        "sha256": "95ea98bebce2877e51a3ec7fd3ee6045ab4281387ce11bfa0cd00cb04bcaeebb"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "python": "3.12.0"
+      },
+      "sha256": "5d90de62453f0ce940574026f2650a9de942f191d01f72ccf6e198e98ac372a8",
+      "duree_s": 0.1,
+      "statut": "admis"
+    },
+    {
+      "id": "P04-1",
+      "ouvrage": "python",
+      "chapitre": 4,
+      "partie": 2,
+      "titre_partie": "NumPy et figures",
+      "section": 1,
+      "titre_section": "Monte-Carlo avec NumPy",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P04/P04-1_Monte_Carlo.ipynb",
+      "corrige": "python/P04/P04-1_Monte_Carlo_CORRIGE.ipynb",
+      "controles": [
+        "4.1",
+        "4.2",
+        "4.3"
+      ],
+      "resultats": {
+        "cellules": 9,
+        "lignes": 27,
+        "sha256": "c12a79b618d0a3750a6c8213edf7ef2007543cbcb63ae0088c7a18f55fe0e369"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0"
+      },
+      "sha256": "164e858dbe737fa481227e2288e820737fe7cea8233c027365f9db778e737763",
+      "duree_s": 0.9,
+      "statut": "admis"
+    },
+    {
+      "id": "P05-1",
+      "ouvrage": "python",
+      "chapitre": 5,
+      "partie": 2,
+      "titre_partie": "NumPy et figures",
+      "section": 1,
+      "titre_section": "Figures d'ingénieur",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P05/P05-1_Figures.ipynb",
+      "corrige": "python/P05/P05-1_Figures_CORRIGE.ipynb",
+      "controles": [
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5"
+      ],
+      "resultats": {
+        "cellules": 23,
+        "lignes": 55,
+        "sha256": "079d7387919a40cb1c6275c6d3711fbcfbc45c0d725a0d5ef95b15bb33350372"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "matplotlib": "3.11.1",
+        "numpy": "2.4.6",
+        "python": "3.12.0"
+      },
+      "sha256": "dec7a35bacea7099c83f57f0fddbc49b8e0887cefda7640e4a81a68df90fe46e",
+      "duree_s": 2.7,
+      "statut": "admis"
+    },
+    {
+      "id": "P06-1",
+      "ouvrage": "python",
+      "chapitre": 6,
+      "partie": 2,
+      "titre_partie": "NumPy et figures",
+      "section": 1,
+      "titre_section": "Calcul sur tableaux",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P06/P06-1_Tableaux.ipynb",
+      "corrige": "python/P06/P06-1_Tableaux_CORRIGE.ipynb",
+      "controles": [
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4"
+      ],
+      "resultats": {
+        "cellules": 15,
+        "lignes": 30,
+        "sha256": "0860990369d56cf768e2692ed15cb13dfcd2051cdeb4e66bc8dd20c20bec897f"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scikit-learn": "1.9.0"
+      },
+      "sha256": "8a607e622aa52d3d69c3b4cf16cab89df5272cf9a4c0225e82b897c90453d681",
+      "duree_s": 1.9,
+      "statut": "admis"
+    },
+    {
+      "id": "P06-2",
+      "ouvrage": "python",
+      "chapitre": 6,
+      "partie": 2,
+      "titre_partie": "NumPy et figures",
+      "section": 2,
+      "titre_section": "Étude II : ressorts de compression",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P06/P06-2_Etude_Ressort.ipynb",
+      "corrige": "python/P06/P06-2_Etude_Ressort_CORRIGE.ipynb",
+      "controles": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "resultats": {
+        "cellules": 6,
+        "lignes": 19,
+        "sha256": "3b76fcab772f3a4f34a7b027a5639bb03732f0938c2accf878648b89ac3e30f3"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "matplotlib": "3.11.1",
+        "numpy": "2.4.6",
+        "python": "3.12.0"
+      },
+      "sha256": "d5341a972e8ee8c6198b3a629ffc2f55d6bc011ba122c0436dbff3ed4bd4b9fb",
+      "duree_s": 0.7,
+      "statut": "admis"
+    },
+    {
+      "id": "P07-1",
+      "ouvrage": "python",
+      "chapitre": 7,
+      "partie": 3,
+      "titre_partie": "Les données de production",
+      "section": 1,
+      "titre_section": "Lecture et nettoyage des mesures",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "AI4I_maintenance",
+          "sha256": "ee47f4d2337b31c92c53226a5cae5d6db446eef6d2404c31abe401353623f1d6"
+        },
+        {
+          "id": "AI4I_maintenance_TypePanne",
+          "sha256": "534487bdf0b7b46d4239c0a71e9dc1cb80962ca2a2ebc0fc6c4732e88c0cce9b"
+        },
+        {
+          "id": "RUL",
+          "sha256": "6925d3c613ec0f021457c65cf5e339f6eb43b46d2064d51312871ca1d88cccd2"
+        },
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        }
+      ],
+      "sujet": "python/P07/P07-1_Lire_Nettoyer.ipynb",
+      "corrige": "python/P07/P07-1_Lire_Nettoyer_CORRIGE.ipynb",
+      "controles": [
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4"
+      ],
+      "resultats": {
+        "cellules": 11,
+        "lignes": 54,
+        "sha256": "47621baf3620cc550673828e8bda1011bd6b6687163023c8ca4e492c4bd4e45f"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "pandas": "3.0.5",
+        "python": "3.12.0"
+      },
+      "sha256": "52e40948201d3624fa7be906f942807b68aa22c9942358101cd3d661ebbb5881",
+      "duree_s": 2.5,
+      "statut": "admis"
+    },
+    {
+      "id": "P08-1",
+      "ouvrage": "python",
+      "chapitre": 8,
+      "partie": 3,
+      "titre_partie": "Les données de production",
+      "section": 1,
+      "titre_section": "Regroupements et jointures",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "AI4I_maintenance",
+          "sha256": "ee47f4d2337b31c92c53226a5cae5d6db446eef6d2404c31abe401353623f1d6"
+        },
+        {
+          "id": "AI4I_maintenance_TypePanne",
+          "sha256": "534487bdf0b7b46d4239c0a71e9dc1cb80962ca2a2ebc0fc6c4732e88c0cce9b"
+        },
+        {
+          "id": "RUL",
+          "sha256": "6925d3c613ec0f021457c65cf5e339f6eb43b46d2064d51312871ca1d88cccd2"
+        },
+        {
+          "id": "TimeSeries_RUL",
+          "sha256": "e48b0ff85d225ba79c2be2627e2be55c70a96b70bb27da203e0712011ad24ebe"
+        }
+      ],
+      "sujet": "python/P08/P08-1_Regrouper_Joindre.ipynb",
+      "corrige": "python/P08/P08-1_Regrouper_Joindre_CORRIGE.ipynb",
+      "controles": [
+        "8.1",
+        "8.2",
+        "8.3"
+      ],
+      "resultats": {
+        "cellules": 12,
+        "lignes": 37,
+        "sha256": "3402b4c7d525d955ed7e2823e6ac2b5f9f7a19b2070ac9f38c0d8f994b93b2f6"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "pandas": "3.0.5",
+        "python": "3.12.0"
+      },
+      "sha256": "eb92c14eb56cdfd8f0573621f062c2f42ddea24579da031f8340ae7db69959f7",
+      "duree_s": 2.5,
+      "statut": "admis"
+    },
+    {
+      "id": "P09-1",
+      "ouvrage": "python",
+      "chapitre": 9,
+      "partie": 3,
+      "titre_partie": "Les données de production",
+      "section": 1,
+      "titre_section": "Mesures datées",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "AI4I_maintenance",
+          "sha256": "ee47f4d2337b31c92c53226a5cae5d6db446eef6d2404c31abe401353623f1d6"
+        },
+        {
+          "id": "AI4I_maintenance_TypePanne",
+          "sha256": "534487bdf0b7b46d4239c0a71e9dc1cb80962ca2a2ebc0fc6c4732e88c0cce9b"
+        }
+      ],
+      "sujet": "python/P09/P09-1_Mesures_Datees.ipynb",
+      "corrige": "python/P09/P09-1_Mesures_Datees_CORRIGE.ipynb",
+      "controles": [
+        "9.1",
+        "9.2",
+        "9.3"
+      ],
+      "resultats": {
+        "cellules": 10,
+        "lignes": 22,
+        "sha256": "69175475c3795887aefb23f16b32986df00e8f047989c8153037075d499a3799"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "pandas": "3.0.5",
+        "python": "3.12.0"
+      },
+      "sha256": "fb03986221c80aad340212ef9b0bf058e79df195d66c2529ca8ea9c8d64ccaec",
+      "duree_s": 1.3,
+      "statut": "admis"
+    },
+    {
+      "id": "P09-2",
+      "ouvrage": "python",
+      "chapitre": 9,
+      "partie": 3,
+      "titre_partie": "Les données de production",
+      "section": 2,
+      "titre_section": "Étude III : tableau de bord d'une ligne",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "AI4I_maintenance",
+          "sha256": "ee47f4d2337b31c92c53226a5cae5d6db446eef6d2404c31abe401353623f1d6"
+        },
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        }
+      ],
+      "sujet": "python/P09/P09-2_Etude_Ligne.ipynb",
+      "corrige": "python/P09/P09-2_Etude_Ligne_CORRIGE.ipynb",
+      "controles": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "resultats": {
+        "cellules": 7,
+        "lignes": 19,
+        "sha256": "036e6c3524f82a35fbfb1986f4cd69d3374e09989631a61354cad117f9ffcab4"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "matplotlib": "3.11.1",
+        "pandas": "3.0.5",
+        "python": "3.12.0"
+      },
+      "sha256": "81fc10848552681942612fa1505966d2a202ef8322042d241b0721f641fa2c3d",
+      "duree_s": 2.6,
+      "statut": "admis"
+    },
+    {
+      "id": "P10-1",
+      "ouvrage": "python",
+      "chapitre": 10,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Calcul symbolique avec SymPy",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P10/P10-1_Calcul_Symbolique.ipynb",
+      "corrige": "python/P10/P10-1_Calcul_Symbolique_CORRIGE.ipynb",
+      "controles": [
+        "10.1",
+        "10.2",
+        "10.3"
+      ],
+      "resultats": {
+        "cellules": 6,
+        "lignes": 40,
+        "sha256": "b2382a89050951560963e3150e13d1457098f8258804043c717a6cd31ae1b563"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "sympy": "1.14.0"
+      },
+      "sha256": "fc5069570856d043f987f4e3b917419ba17a0d41fc2987218a5938ed449d0316",
+      "duree_s": 1.3,
+      "statut": "admis"
+    },
+    {
+      "id": "P11-1",
+      "ouvrage": "python",
+      "chapitre": 11,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Algèbre linéaire et structures",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P11/P11-1_Structure.ipynb",
+      "corrige": "python/P11/P11-1_Structure_CORRIGE.ipynb",
+      "controles": [
+        "11.1",
+        "11.2",
+        "11.3",
+        "11.4"
+      ],
+      "resultats": {
+        "cellules": 16,
+        "lignes": 30,
+        "sha256": "ba8673bf570071983ee1a4b5a79439f659f2e4bfe7939520f8c2b85e8fbdc4cf"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "9fc778683f88a9b9ceb55c1df5b8e73804a5f1e2c2d72f5779a4413c2f41f1de",
+      "duree_s": 1.2,
+      "statut": "admis"
+    },
+    {
+      "id": "P12-1",
+      "ouvrage": "python",
+      "chapitre": 12,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Résolution numérique et optimisation",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P12/P12-1_Optimiser.ipynb",
+      "corrige": "python/P12/P12-1_Optimiser_CORRIGE.ipynb",
+      "controles": [
+        "12.1",
+        "12.2",
+        "12.3",
+        "12.4"
+      ],
+      "resultats": {
+        "cellules": 20,
+        "lignes": 54,
+        "sha256": "557a324caa8c544d9dd1e1cb80780c146ebf09f181606cd620e4f48c359b9fbb"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0",
+        "sympy": "1.14.0"
+      },
+      "sha256": "b8fa294a8f8662511b8f802b2efebe4f0ec148fd55422661793a409d4b84c232",
+      "duree_s": 1.3,
+      "statut": "admis"
+    },
+    {
+      "id": "P13-1",
+      "ouvrage": "python",
+      "chapitre": 13,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Intégrer et simuler",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P13/P13-1_Integrer.ipynb",
+      "corrige": "python/P13/P13-1_Integrer_CORRIGE.ipynb",
+      "controles": [
+        "13.1",
+        "13.2",
+        "13.3"
+      ],
+      "resultats": {
+        "cellules": 11,
+        "lignes": 24,
+        "sha256": "3b0fbd26d689042ba6121cf37dbb749a2b6030a777c50c2960c87b5b88fa6d58"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "0e879f4921a3bfb14c35cf773f23f64841e352f2afa14f7755e979893ce7a3bb",
+      "duree_s": 0.8,
+      "statut": "admis"
+    },
+    {
+      "id": "P14-1",
+      "ouvrage": "python",
+      "chapitre": 14,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Interpoler un abaque",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P14/P14-1_Interpoler.ipynb",
+      "corrige": "python/P14/P14-1_Interpoler_CORRIGE.ipynb",
+      "controles": [
+        "14.1",
+        "14.2",
+        "14.3"
+      ],
+      "resultats": {
+        "cellules": 9,
+        "lignes": 18,
+        "sha256": "1cec383a71ebcb9692c7f9e9cbec63dcfe59b134f14ace447d1926d524b6fd2a"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "f372f98638cfcc989f21018f7f021f990f38931cd6a694d52ee9db0ad6c4087f",
+      "duree_s": 0.7,
+      "statut": "admis"
+    },
+    {
+      "id": "P15-1",
+      "ouvrage": "python",
+      "chapitre": 15,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Modéliser une dispersion",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "RUL",
+          "sha256": "6925d3c613ec0f021457c65cf5e339f6eb43b46d2064d51312871ca1d88cccd2"
+        },
+        {
+          "id": "TimeSeries_RUL",
+          "sha256": "e48b0ff85d225ba79c2be2627e2be55c70a96b70bb27da203e0712011ad24ebe"
+        }
+      ],
+      "sujet": "python/P15/P15-1_Dispersion.ipynb",
+      "corrige": "python/P15/P15-1_Dispersion_CORRIGE.ipynb",
+      "controles": [
+        "15.1",
+        "15.2",
+        "15.3",
+        "15.4"
+      ],
+      "resultats": {
+        "cellules": 17,
+        "lignes": 27,
+        "sha256": "5fca288c932ff1054db75d98420fd5a57eed80e1857f524ba52ce01e72ee1a84"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "python": "3.12.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "ca1227d27d63c8f9bef92fcc6fafbbee275d5a059995240f4fd18578241dd3f0",
+      "duree_s": 2.2,
+      "statut": "admis"
+    },
+    {
+      "id": "P16-1",
+      "ouvrage": "python",
+      "chapitre": 16,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 1,
+      "titre_section": "Filtrage et analyse spectrale",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P16/P16-1_Spectre.ipynb",
+      "corrige": "python/P16/P16-1_Spectre_CORRIGE.ipynb",
+      "controles": [
+        "16.1",
+        "16.2",
+        "16.3",
+        "16.4"
+      ],
+      "resultats": {
+        "cellules": 12,
+        "lignes": 25,
+        "sha256": "1d89ba1ad1a57bf0c5027cc9c59ad440ebae1853701e773e709518d3c43cae32"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "6029d964c1c7e97bc4b64787556829d551021a2842c2cb3a06a6bd9ab6f0696a",
+      "duree_s": 1.1,
+      "statut": "admis"
+    },
+    {
+      "id": "P16-2",
+      "ouvrage": "python",
+      "chapitre": 16,
+      "partie": 4,
+      "titre_partie": "Calcul symbolique et scientifique",
+      "section": 2,
+      "titre_section": "Étude IV : système à deux masses",
+      "mode": "resultats_attendus",
+      "jeux": [],
+      "sujet": "python/P16/P16-2_Etude_DeuxMasses.ipynb",
+      "corrige": "python/P16/P16-2_Etude_DeuxMasses_CORRIGE.ipynb",
+      "controles": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "resultats": {
+        "cellules": 6,
+        "lignes": 16,
+        "sha256": "16bbc5c04f2b4b150c34334ba6b56bdd66ee4f07d59b250c2b7f9e2fe9388514"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "python": "3.12.0",
+        "scipy": "1.18.0",
+        "sympy": "1.14.0"
+      },
+      "sha256": "b2c5d861e1769cfb0edcc32007f26a5e584e51c7b08fe240cb762b40734c89d8",
+      "duree_s": 4.5,
+      "statut": "admis"
+    },
+    {
+      "id": "P17-1",
+      "ouvrage": "python",
+      "chapitre": 17,
+      "partie": 5,
+      "titre_partie": "Des données au modèle",
+      "section": 1,
+      "titre_section": "Analyse exploratoire des données",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        },
+        {
+          "id": "Surveillance_Vibratoire",
+          "sha256": "d75877b8b2d5ba784846bbfd14c304286e4156e2eb49c7a12fb9f8799ccd9141"
+        },
+        {
+          "id": "TimeSeries_RUL",
+          "sha256": "e48b0ff85d225ba79c2be2627e2be55c70a96b70bb27da203e0712011ad24ebe"
+        }
+      ],
+      "sujet": "python/P17/P17-1_EDA.ipynb",
+      "corrige": "python/P17/P17-1_EDA_CORRIGE.ipynb",
+      "controles": [
+        "17.1",
+        "17.2",
+        "17.3",
+        "17.4",
+        "17.5"
+      ],
+      "resultats": {
+        "cellules": 22,
+        "lignes": 96,
+        "sha256": "1d25d7aea1f0c3e63089cb81067e7398a83a25cbdfadf38eb453ac5b7ecb9905"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "matplotlib": "3.11.1",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "python": "3.12.0",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.0",
+        "seaborn": "0.13.2"
+      },
+      "sha256": "f1a6100762ae135238fb2bc16f4cf5027cd5114ddced6ed5dc76dc23ff6770b5",
+      "duree_s": 7.1,
+      "statut": "admis"
+    },
+    {
+      "id": "P18-1",
+      "ouvrage": "python",
+      "chapitre": 18,
+      "partie": 5,
+      "titre_partie": "Des données au modèle",
+      "section": 1,
+      "titre_section": "Préparer les données : ENISE",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "Qualite_soudure",
+          "sha256": "b569cb56041f3c9f7d965b74f58e272fa0e3cb8f8b6ab3b448c6df07d0ddb2ed"
+        },
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        },
+        {
+          "id": "Surveillance_Vibratoire",
+          "sha256": "d75877b8b2d5ba784846bbfd14c304286e4156e2eb49c7a12fb9f8799ccd9141"
+        }
+      ],
+      "sujet": "python/P18/P18-1_ENISE.ipynb",
+      "corrige": "python/P18/P18-1_ENISE_CORRIGE.ipynb",
+      "controles": [
+        "18.1",
+        "18.2",
+        "18.3",
+        "18.4",
+        "18.5"
+      ],
+      "resultats": {
+        "cellules": 9,
+        "lignes": 69,
+        "sha256": "5846414a6edf5a10e290ae8f252930f3366dd6ab3f2409b42f9702b7d7fa039d"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "matplotlib": "3.11.1",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "python": "3.12.0",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.0"
+      },
+      "sha256": "49a96bb8bfb996720db4cd66c828475f08e5664f35e6ff86c4977730e64dddd8",
+      "duree_s": 13.9,
+      "statut": "admis"
+    },
+    {
+      "id": "P19-1",
+      "ouvrage": "python",
+      "chapitre": 19,
+      "partie": 5,
+      "titre_partie": "Des données au modèle",
+      "section": 1,
+      "titre_section": "Du script au premier modèle",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "Plaque_Trouee_FEA",
+          "sha256": "5979320ce2d3a5af44b97a550515f6239fec3ef936c5a178ec9203d59d5ad6b5"
+        },
+        {
+          "id": "RUL",
+          "sha256": "6925d3c613ec0f021457c65cf5e339f6eb43b46d2064d51312871ca1d88cccd2"
+        },
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        },
+        {
+          "id": "Surveillance_Vibratoire",
+          "sha256": "d75877b8b2d5ba784846bbfd14c304286e4156e2eb49c7a12fb9f8799ccd9141"
+        },
+        {
+          "id": "TimeSeries_RUL",
+          "sha256": "e48b0ff85d225ba79c2be2627e2be55c70a96b70bb27da203e0712011ad24ebe"
+        },
+        {
+          "id": "Traitement_Acier",
+          "sha256": "4d38f19eda82408f1d9d8b540e02d7d4d8ed77c9dfd00b77282633064c1f13e7"
+        }
+      ],
+      "sujet": "python/P19/P19-1_Outil_Modele.ipynb",
+      "corrige": "python/P19/P19-1_Outil_Modele_CORRIGE.ipynb",
+      "controles": [
+        "19.1",
+        "19.2",
+        "19.3",
+        "19.4",
+        "19.5",
+        "19.6",
+        "19.7"
+      ],
+      "resultats": {
+        "cellules": 21,
+        "lignes": 65,
+        "sha256": "86e674d89307d9788e8fd1babc71167082b2d73a078dad12da03583bd29b11a5"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "defi": {
+        "jeu": "RUL",
+        "metrique": "r2",
+        "sens": "max",
+        "decimales": 3,
+        "base_test": {
+          "methode": "aleatoire",
+          "test_size": 0.25,
+          "random_state": 42,
+          "colonne_groupe": null,
+          "lignes_test": 60,
+          "empreinte_sha256": "02fef0d6a32e769fd1c3ade81a39e33455f17bae7762c6977c2a04516a8cb4aa"
+        },
+        "score_reference": "0.358"
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "python": "3.12.0"
+      },
+      "sha256": "c51ff7682dbbc9c1bd826c13221cdceb49044b2462ade35c8eadfa4cff86283b",
+      "duree_s": 6.3,
+      "statut": "admis"
+    },
+    {
+      "id": "P19-2",
+      "ouvrage": "python",
+      "chapitre": 19,
+      "partie": 5,
+      "titre_partie": "Des données au modèle",
+      "section": 2,
+      "titre_section": "Étude V : suivi de production",
+      "mode": "resultats_attendus",
+      "jeux": [
+        {
+          "id": "Suivi_Production_Machines",
+          "sha256": "5c3f5f707868330a2bae659f381cc7ccf90f38ed5bca91baade470990b8f49c6"
+        }
+      ],
+      "sujet": "python/P19/P19-2_Etude_Projet.ipynb",
+      "corrige": "python/P19/P19-2_Etude_Projet_CORRIGE.ipynb",
+      "controles": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "resultats": {
+        "cellules": 7,
+        "lignes": 32,
+        "sha256": "33df5d5391e0d3acaed942c7d2789480197fffdd588aae9fb201fd5cedeaf61b"
+      },
+      "tolerance": {
+        "relative": 1e-09,
+        "absolue": 1e-12
+      },
+      "versions": {
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "python": "3.12.0",
+        "scikit-learn": "1.9.0"
+      },
+      "sha256": "8838d8aae82baf83fc979247d34a8a5f9e1dabc4b3af6a6e44cb0cba9d9b5f40",
+      "duree_s": 3.1,
+      "statut": "admis"
+    }
+  ],
+  "externes": [],
+  "outils": [
+    {
+      "id": "meca",
+      "fichier": "outils/meca.py",
+      "sha256": "75e40c3f896835515ec32cfafab548deba4a841ade72b9f5e73570f906a7c533",
+      "licence": "MIT",
+      "tests": "outils/tests/test_meca.py",
+      "cas_verts": 18,
+      "dependances": [
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "scikit-learn"
+      ],
+      "briques": [],
+      "type": "module",
+      "jeux_testes": [
+        "Plaque_Trouee_FEA",
+        "RUL",
+        "Suivi_Production_Machines"
+      ]
+    },
+    {
+      "id": "meca_donnees",
+      "fichier": "outils/meca_donnees.py",
+      "sha256": "04f8de13dbd93a9d582397350f4eccf619edd481dfe8c3583cab612dcaa400c2",
+      "licence": "MIT",
+      "tests": "outils/tests/test_meca_donnees.py",
+      "cas_verts": 7,
+      "dependances": [
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "scikit-learn",
+        "scipy",
+        "seaborn"
+      ],
+      "briques": [],
+      "type": "module",
+      "jeux_testes": [
+        "RUL"
+      ]
+    },
+    {
+      "id": "meca_style",
+      "fichier": "outils/meca_style.py",
+      "sha256": "affece3cc76154915472c97be7895e3a2de3ff5c25f1614047afccd33f917f54",
+      "licence": "MIT",
+      "tests": "outils/tests/test_meca_style.py",
+      "cas_verts": 15,
+      "dependances": [
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "seaborn"
+      ],
+      "briques": [],
+      "type": "module",
+      "jeux_testes": []
+    }
+  ]
+}
