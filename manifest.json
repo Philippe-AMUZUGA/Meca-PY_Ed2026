@@ -329,7 +329,7 @@
       "resultats": {
         "cellules": 9,
         "lignes": 27,
-        "sha256": "c12a79b618d0a3750a6c8213edf7ef2007543cbcb63ae0088c7a18f55fe0e369"
+        "sha256": "795070415982c67a1705d7e4659cef435d620a89422aac602809f1e48b3b54c8"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -339,8 +339,8 @@
         "numpy": "2.4.6",
         "python": "3.12.0"
       },
-      "sha256": "85722a7f784c3109e6e75b6cb1450160056387ad0b94a67510a30c775c6b9993",
-      "duree_s": 0.9,
+      "sha256": "95166c085b2181c7ca5b1d3192349c4e7232d6439b8d7cbc38c322d148ae205d",
+      "duree_s": 0.4,
       "statut": "admis"
     },
     {
@@ -365,7 +365,7 @@
       "resultats": {
         "cellules": 23,
         "lignes": 55,
-        "sha256": "079d7387919a40cb1c6275c6d3711fbcfbc45c0d725a0d5ef95b15bb33350372"
+        "sha256": "4ac4784ef2a1494b9827f190645eea59d9dc7da1a7b58136fc16444105f73df6"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -376,8 +376,8 @@
         "numpy": "2.4.6",
         "python": "3.12.0"
       },
-      "sha256": "58c88c5343dd876a586b85178826a2cf52d3b292f85be16e79036eb187105b32",
-      "duree_s": 2.7,
+      "sha256": "17170e7ee429591a388e1c2fa2716a024c8b8bbe41f757d05f00f0799cb191b1",
+      "duree_s": 2.6,
       "statut": "admis"
     },
     {
@@ -501,8 +501,8 @@
         "pandas": "3.0.5",
         "python": "3.12.0"
       },
-      "sha256": "dbfcea35c72453647684a3797655890337c6f980c0f4748e59055c2d700029c5",
-      "duree_s": 2.5,
+      "sha256": "8c636d358cbf0d44883d0a0a56703eeedebbe67b5f8dc9f04d2fe333ee39a228",
+      "duree_s": 2.4,
       "statut": "admis"
     },
     {
@@ -542,7 +542,7 @@
       "resultats": {
         "cellules": 12,
         "lignes": 37,
-        "sha256": "3402b4c7d525d955ed7e2823e6ac2b5f9f7a19b2070ac9f38c0d8f994b93b2f6"
+        "sha256": "767729eb5c4d74b68e98d663e7b8ce99d329c5968a6b11ce4558b68f28b05e5a"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -552,8 +552,8 @@
         "pandas": "3.0.5",
         "python": "3.12.0"
       },
-      "sha256": "bba97fc33bab48c081cf570e2e5f0ba46ef87b6ef0d43996c9920aaae92e4e42",
-      "duree_s": 2.5,
+      "sha256": "6a07f43a0ff6833f2ad69f7386cdc0b7f50a3b6b09942bb8e52dbe105b28dd8c",
+      "duree_s": 1.9,
       "statut": "admis"
     },
     {
@@ -736,7 +736,7 @@
       "resultats": {
         "cellules": 20,
         "lignes": 54,
-        "sha256": "557a324caa8c544d9dd1e1cb80780c146ebf09f181606cd620e4f48c359b9fbb"
+        "sha256": "df3d393f80231cbc6a7800f785510d0de5feb940ea4ff591b35d8ae9c2c34b53"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -748,7 +748,7 @@
         "scipy": "1.18.0",
         "sympy": "1.14.0"
       },
-      "sha256": "b7cdc48480a7ccb429091663dc244f6431bfbf14cb0cb9ca914c14a1b56cf1e9",
+      "sha256": "898e976331743cca637fd23c5ea26f4c478e5fce8d394b6d851fe70a84161283",
       "duree_s": 1.3,
       "statut": "admis"
     },
@@ -783,7 +783,7 @@
         "python": "3.12.0",
         "scipy": "1.18.0"
       },
-      "sha256": "75904c2139032d63f5f6642d22a33d661852353e86f43bec176708593fe2456d",
+      "sha256": "c89e728bb6e851d15bf57726827ced0018f3e4d9106f29f2f89fbbe8ae8c8de9",
       "duree_s": 0.8,
       "statut": "admis"
     },
@@ -1154,8 +1154,8 @@
       ],
       "resultats": {
         "cellules": 7,
-        "lignes": 32,
-        "sha256": "33df5d5391e0d3acaed942c7d2789480197fffdd588aae9fb201fd5cedeaf61b"
+        "lignes": 31,
+        "sha256": "09bee6bc09688377b4a02c5e8368d4c0d50a327fd56b4a3acfc9b7d6c7a83238"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -1167,8 +1167,8 @@
         "python": "3.12.0",
         "scikit-learn": "1.9.0"
       },
-      "sha256": "786ce18593e1a9ac3e6777c01026a613252e52199c2c07f7e0fdbb4c9329722d",
-      "duree_s": 3.1,
+      "sha256": "24957ade57b2e2cc64ddfd3cd3b4e6763faec15829a363376e497b1347d9b927",
+      "duree_s": 3.0,
       "statut": "admis"
     }
   ],
