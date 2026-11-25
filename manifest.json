@@ -552,7 +552,7 @@
         "pandas": "3.0.5",
         "python": "3.12.0"
       },
-      "sha256": "6a07f43a0ff6833f2ad69f7386cdc0b7f50a3b6b09942bb8e52dbe105b28dd8c",
+      "sha256": "02ac6820f2bf89ca70b8aab2b3a4395c4e11abfb94e90b09b4e4e2bc22fb0df7",
       "duree_s": 1.9,
       "statut": "admis"
     },
@@ -977,7 +977,7 @@
       "resultats": {
         "cellules": 22,
         "lignes": 96,
-        "sha256": "1d25d7aea1f0c3e63089cb81067e7398a83a25cbdfadf38eb453ac5b7ecb9905"
+        "sha256": "c3d5a1dcace154af90dc4a5659aaab6784b2254cd5d88f27e614cecad5973847"
       },
       "tolerance": {
         "relative": 1e-09,
@@ -992,8 +992,8 @@
         "scipy": "1.18.0",
         "seaborn": "0.13.2"
       },
-      "sha256": "377d9f5131823ca9d6a730fc743ed86caa87df66c201a6b40f2741f49e62bce3",
-      "duree_s": 7.1,
+      "sha256": "3c7df46fd88d466f6e4a6899be01ddb7ebdcfb6d2820ae400aedf2650668c157",
+      "duree_s": 6.9,
       "statut": "admis"
     },
     {
